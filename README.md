@@ -1,12 +1,10 @@
 # ultimate-elastic-scripts
 
-
 This repository contains a set of configuration scripts for elastic stack components
 to analyze Ultimate logs and corresponding Benchexec scripts.   
 The setp process is described below. 
 
-
-## Installation (Elastic Stack)
+## Installation (elastic stack)
 The following four components from the elastic stack are required to be installed.
 (Get the latest version - 7.5 as of december 2019 - of the components at the corresponding links below) 
 
@@ -44,7 +42,33 @@ The following datasets are used for testing the setup:
 
 
 ## Start the Services
-TODO: insert coresponding commands here
 
-## Delete collected data
-TODO: insert coresponding commands here
+The binaries for the tools are located in the `bin/` (except for filebeat where they are directly on the root level)
+
+* Elasticsearch:  
+```
+elasticsearch
+```
+* Kibana
+```
+kibana.bat
+```
+* Logstash  
+```
+logstash.bat -f ..\config\logstash-ultimate.conf
+```
+* Filebeat  
+```
+filebeat.exe
+```
+
+
+## Delete data
+
+* Delete all logstash data:
+```
+curl -XDELETE localhost:9200/logstash*
+```
+* Delete filebeat registry:
+```
+rm data\registry data\registry.old```
